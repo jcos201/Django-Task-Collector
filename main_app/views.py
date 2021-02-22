@@ -14,3 +14,7 @@ def about(request):
 def tasks_index(request):
     tasks = Task.objects.all()
     return render(request, 'tasks/index.html', { 'tasks': tasks })
+
+def task_detail(request, task_id):
+    task = Task.objects.get(id=task_id)
+    return render(request, 'tasks/detail.html', { 'task':task })

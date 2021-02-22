@@ -3,13 +3,16 @@
 
 <h1>Task List</h1>
 
-{% for task in task %}
+{% for task in tasks %}
     <div class="card">
-        <div class="card-content">
-            <span class="card-title">{{ task.name }}</span>
-            <p>Description: {{ task.description }}</p>
-            <p>Status: {{ task.status }}</p>
-        </div>
+        <a href="{% url 'detail' task.id %}">
+
+            <div class="card-content">
+                <span class="card-title">{{ task.name }}</span>
+                <p>Description: {{ task.description }}</p>
+                <p>Status: {{ task.status }}</p>
+            </div>
+        </a>
     </div>
 {% endfor %}
 
