@@ -1,9 +1,15 @@
 from django.shortcuts import render
 
+from django.views.generic.edit import CreateView
 from .models import Task
 
 # Create your views here.
 from django.http import HttpResponse
+
+class TaskCreate(CreateView):
+    model = Task
+    fields = '__all__'
+    success_url = 'tasks/'
 
 def home(request):
     return render(request, 'home.html')

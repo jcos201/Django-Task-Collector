@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 STATUS = (
     ('U', 'Unassigned'),
@@ -18,3 +19,6 @@ class Task(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+    
+    def get_absolute_url(self):
+      return reverse('detail', kwargs={'task_id': self.id})
