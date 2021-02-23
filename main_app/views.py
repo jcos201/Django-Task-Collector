@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Task
 
 # Create your views here.
@@ -10,6 +10,14 @@ class TaskCreate(CreateView):
     model = Task
     fields = '__all__'
     success_url = 'tasks/'
+
+class TaskUpdate(UpdateView):
+    model = Task
+    fields = ['description','status']
+
+class TaskDelete(DeleteView):
+    model = Task
+    success_url = '/tasks/'
 
 def home(request):
     return render(request, 'home.html')

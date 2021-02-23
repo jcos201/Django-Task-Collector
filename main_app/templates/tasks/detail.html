@@ -9,6 +9,10 @@
         <p>Description: {{ task.description }}</p>
         <p>Status: {{ task.status }}</p>
     </div>
+    <div class="card-action">
+        <a href="{% url 'tasks_update' task.id %}">Edit</a>
+        <a href="{% url 'tasks_delete' task.id %}">Delete</a>
+    </div>
 </div>
 
 {% endblock %}
