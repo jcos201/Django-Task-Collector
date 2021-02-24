@@ -13,7 +13,7 @@ class TaskCreate(CreateView):
 
 class TaskUpdate(UpdateView):
     model = Task
-    fields = ['description','status']
+    fields = ['description', 'due_date']
 
 class TaskDelete(DeleteView):
     model = Task
