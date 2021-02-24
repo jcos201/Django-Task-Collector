@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Task
 
+from .forms import StatusForm
+
 # Create your views here.
 from django.http import HttpResponse
 
@@ -31,4 +33,5 @@ def tasks_index(request):
 
 def task_detail(request, task_id):
     task = Task.objects.get(id=task_id)
-    return render(request, 'tasks/detail.html', { 'task':task })
+    status_form = StatusForm()
+    return render(request, 'tasks/detail.html', { 'task':task, 'status_form':status_form })

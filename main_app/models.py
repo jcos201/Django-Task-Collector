@@ -18,7 +18,7 @@ class Team_Member(models.Model):
 class Task(models.Model):
     name = models.CharField(max_length=250)
     description = models.TextField(max_length=250)
-    due_date = models.DateField()
+    due_date = models.DateField('due date')
 
     team_members = models.ManyToManyField(Team_Member)
 
