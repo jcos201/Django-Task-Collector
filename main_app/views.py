@@ -35,8 +35,13 @@ def tasks_index(request):
 
 def task_detail(request, task_id):
     task = Task.objects.get(id=task_id)
+    team_members_not_assigned = Team_Member.objects.exclude(id__in = task.team_members.all().values_list('id'))
     status_form = StatusForm()
-    return render(request, 'tasks/detail.html', { 'task':task, 'status_form':status_form })
+    return render(request, 'tasks/detail.html', { 
+        'task':task, 
+        'status_form':status_form,
+        'available_team_members': team_members_not_assigned
+     })
 
 def status_update(request, task_id):
     form = StatusForm(request.POST)
