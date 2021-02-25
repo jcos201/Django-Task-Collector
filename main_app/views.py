@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Task
+from .models import Task, Status
 
 from .forms import StatusForm
 
@@ -15,6 +15,7 @@ class TaskCreate(CreateView):
 
 class TaskUpdate(UpdateView):
     model = Task
+    status_form = StatusForm()
     fields = ['description', 'due_date']
 
 class TaskDelete(DeleteView):
@@ -35,3 +36,11 @@ def task_detail(request, task_id):
     task = Task.objects.get(id=task_id)
     status_form = StatusForm()
     return render(request, 'tasks/detail.html', { 'task':task, 'status_form':status_form })
+
+def status_update(request, task_id):
+    form = StatusForm(request.POST)
+    s = Task.objects.get(id=task_id).status_set.first()
+    if form.is_valid():
+        updated_status = form.cleaned_data['status']
+        Status.objects.filter(pk=s.id).update(status=updated_status)
+    return redirect('detail', task_id=task_id)

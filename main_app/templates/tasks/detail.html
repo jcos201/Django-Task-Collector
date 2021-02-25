@@ -30,7 +30,17 @@
                 {% endif %}
             </div>
         </div>
+        <form action="{% url 'status_update' task.id %}" method="post">
+            {% csrf_token %}
+            {{ status_form.as_p }}
+            <input type="submit" value="Status Update" class="btn">
+        </form>
     </div>
 </div>
+
+<script>
+    var selectEl = document.getElementById('id_status');
+    M.FormSelect.init(selectEl);
+</script>
 
 {% endblock %}
