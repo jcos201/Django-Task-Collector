@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Team Member Details</h1>
+
+<div class="row">
+    <div class="col s6 col-offset-3">
+        <div class="card">
+            <div class="card-content">
+                <span class="card-title">{{ team_member.name }}</span>
+                <p>{{ team_member.role }}</p>
+
+            </div>
+            <div class="card-action">
+                <a href="{% url 'team_update' team_member.id %}">Edit</a>
+                <a href="{% url 'team_delete' team_member.id %}">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

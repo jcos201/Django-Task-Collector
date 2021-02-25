@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Task, Status
+from django.views.generic import ListView, DetailView
+from .models import Task, Status, Team_Member
 
 from .forms import StatusForm
 
@@ -44,3 +45,21 @@ def status_update(request, task_id):
         updated_status = form.cleaned_data['status']
         Status.objects.filter(pk=s.id).update(status=updated_status)
     return redirect('detail', task_id=task_id)
+
+class TeamList(ListView):
+    model = Team_Member
+
+class TeamDetail(DetailView):
+    model = Team_Member
+
+class TeamCreate(CreateView):
+    model = Team_Member
+    fields = '__all__'
+
+class TeamUpdate(UpdateView):
+    model = Team_Member
+    fields = '__all__'
+
+class TeamDelete(DeleteView):
+    model = Team_Member
+    success_url = '/team_members/'
