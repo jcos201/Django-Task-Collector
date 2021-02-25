@@ -10,6 +10,8 @@ urlpatterns = [
     path('tasks/<int:pk>/update/', views.TaskUpdate.as_view(), name='tasks_update'),
     path('tasks/<int:pk>/delete/', views.TaskDelete.as_view(), name='tasks_delete'),
     path('tasks/<int:task_id>/status_update/', views.status_update, name='status_update'),
+    path('tasks/<int:task_id>/assoc_team_members/<int:team_member_id>/', views.assoc_team_members, name='assoc_team_members'),
+    path('tasks/<int:task_id>/remove_team_members/<int:team_member_id>/', views.remove_team_members, name='remove_team_members'),
     # Team Member URLs
     path('team_members/', views.TeamList.as_view(), name='team_index'),
     path('team_members/<int:pk>/', views.TeamDetail.as_view(), name='team_detail'),

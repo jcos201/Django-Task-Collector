@@ -43,6 +43,14 @@ def task_detail(request, task_id):
         'available_team_members': team_members_not_assigned
      })
 
+def assoc_team_members(request, task_id, team_member_id):
+    Task.objects.get(id=task_id).team_members.add(team_member_id)
+    return redirect('detail', task_id=task_id)
+
+def remove_team_members(request, task_id, team_member_id):
+    Task.objects.get(id=task_id).team_members.remove(team_member_id)
+    return redirect('detail', task_id=task_id)
+
 def status_update(request, task_id):
     form = StatusForm(request.POST)
     s = Task.objects.get(id=task_id).status_set.first()
