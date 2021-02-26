@@ -19,8 +19,12 @@ from django.http import HttpResponse
 
 class TaskCreate(CreateView):
     model = Task
-    fields = '__all__'
-    success_url = 'tasks/'
+    fields = ['name','description','due_date']
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+    success_url = '/tasks/'
 
 class TaskUpdate(UpdateView):
     model = Task
@@ -43,6 +47,8 @@ def tasks_index(request):
 
 def task_detail(request, task_id):
     task = Task.objects.get(id=task_id)
+    if task.status_set.count == 0:
+        Status.objects.create(status='U',task=task)
     team_members_not_assigned = Team_Member.objects.exclude(id__in = task.team_members.all().values_list('id'))
     status_form = StatusForm()
     return render(request, 'tasks/detail.html', { 

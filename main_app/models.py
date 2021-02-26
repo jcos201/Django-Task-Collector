@@ -1,6 +1,8 @@
 from django.db import models
 from django.urls import reverse
 
+from django.contrib.auth.models import User
+
 STATUS = (
     ('U', 'Unassigned'),
     ('N', 'Assigned - Not Done'),
@@ -25,6 +27,8 @@ class Task(models.Model):
     due_date = models.DateField('due date')
 
     team_members = models.ManyToManyField(Team_Member)
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.name}'
