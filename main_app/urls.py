@@ -18,4 +18,6 @@ urlpatterns = [
     path('team_members/create/', views.TeamCreate.as_view(), name='team_create'),
     path('team_members/<int:pk>/update/', views.TeamUpdate.as_view(), name='team_update'),
     path('team_members/<int:pk>/delete/', views.TeamDelete.as_view(), name='team_delete'),
+    # Team Member Photo URL
+    path('team_members/<int:team_member_id>/add_photo/', views.add_photo, name='add_photo'),
 ]

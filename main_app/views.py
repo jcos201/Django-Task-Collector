@@ -2,9 +2,17 @@ from django.shortcuts import render, redirect
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
-from .models import Task, Status, Team_Member
+from .models import Task, Status, Team_Member, Photo
 
 from .forms import StatusForm
+
+# import for S3 photo upload
+import uuid
+import boto3
+
+# Constants for S3 photo upload
+S3_BASE_URL='https://S3.us-east-1.amazonaws.com/'
+BUCKET = 'taskcollector'
 
 # Create your views here.
 from django.http import HttpResponse
@@ -76,3 +84,25 @@ class TeamUpdate(UpdateView):
 class TeamDelete(DeleteView):
     model = Team_Member
     success_url = '/team_members/'
+
+def add_photo(request, team_member_id):
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        s3 = boto3.client('s3')
+        # The next line of code creates a unique 'key' for S3 and adds file extension with +
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        try:
+            s3.upload_fileobj(photo_file, BUCKET, key)
+            # The next line of code builds the full url string
+            url = f"{S3_BASE_URL}{BUCKET}/{key}"
+            # If Team Member already has photo, replace the photo with the new updated one
+            tm = Team_Member.objects.get(id=team_member_id)
+            if tm.photo_set.count():
+                current_photo = tm.photo_set.first()
+                Photo.objects.filter(id=current_photo.id).update(url=url)
+            else:
+                photo = Photo(url=url, team_member_id=team_member_id)
+                photo.save()
+        except:
+            print('An error occured uploading file to S3')
+    return redirect('/team_members', team_member_id=team_member_id)
