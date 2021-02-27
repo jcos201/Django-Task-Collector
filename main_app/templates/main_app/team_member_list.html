@@ -7,6 +7,9 @@
     <a href="{% url 'team_detail' member.id %}">
         <div class="card">
             <div class="card-content">
+                {% if member.photo_set.count %}
+                <img src="{{ member.photo_set.first.url }} " height="75px" style="padding-right:20px" alt="" class=" left">
+                {% endif %}
                 <span class="card-title">{{ member.name }}</span>
                 <h6>Role: {{ member.role }}</h4>
                 </div>
