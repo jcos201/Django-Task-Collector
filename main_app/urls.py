@@ -13,11 +13,13 @@ urlpatterns = [
     path('tasks/<int:task_id>/assoc_team_members/<int:team_member_id>/', views.assoc_team_members, name='assoc_team_members'),
     path('tasks/<int:task_id>/remove_team_members/<int:team_member_id>/', views.remove_team_members, name='remove_team_members'),
     # Team Member URLs
-    path('team_members/', views.TeamList.as_view(), name='team_index'),
+    path('team_members/', views.team_list, name='team_index'),
     path('team_members/<int:pk>/', views.TeamDetail.as_view(), name='team_detail'),
     path('team_members/create/', views.TeamCreate.as_view(), name='team_create'),
     path('team_members/<int:pk>/update/', views.TeamUpdate.as_view(), name='team_update'),
     path('team_members/<int:pk>/delete/', views.TeamDelete.as_view(), name='team_delete'),
     # Team Member Photo URL
     path('team_members/<int:team_member_id>/add_photo/', views.add_photo, name='add_photo'),
+    # User signup URL
+    path('accounts/signup/', views.signup, name='signup')
 ]
