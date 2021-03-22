@@ -31,10 +31,10 @@
         <ul class="right hide-on-med-and-down">
           <li><a href="{% url 'about' %}">About</a></li>
         {% if user.is_authenticated %}
-          <li><a href="{% url 'team_create' %}">Add A Team Member</a></li>
-          <li><a href="{% url 'team_index' %}">View All Team Members</a></li>
-          <li><a href="{% url 'tasks_create' %}">Add A Task</a></li>
-          <li><a href="{% url 'index' %}">View All Tasks</a></li>
+          <li><a href="{% url 'team_create' %}">Add Team Member</a></li>
+          <li><a href="{% url 'team_index' %}">All Team Members</a></li>
+          <li><a href="{% url 'tasks_create' %}">Add Task</a></li>
+          <li><a href="{% url 'index' %}">All Tasks</a></li>
           <li><a href="{% url 'logout' %}">Log Out</a></li>
         {% else %}
           <li><a href="{% url 'signup' %}">Sign Up</a></li>
@@ -47,10 +47,10 @@
     <ul class="sidenav" id="mobile-nav">
       <li><a href="{% url 'about' %}">About</a></li>
         {% if user.is_authenticated %}
-          <li><a href="{% url 'team_create' %}">Add A Team Member</a></li>
-          <li><a href="{% url 'team_index' %}">View All Team Members</a></li>
-          <li><a href="{% url 'tasks_create' %}">Add A Task</a></li>
-          <li><a href="{% url 'index' %}">View All Tasks</a></li>
+          <li><a href="{% url 'team_create' %}">Add Team Member</a></li>
+          <li><a href="{% url 'team_index' %}">All Team Members</a></li>
+          <li><a href="{% url 'tasks_create' %}">Add Task</a></li>
+          <li><a href="{% url 'index' %}">All Tasks</a></li>
           <li><a href="{% url 'logout' %}">Log Out</a></li>
         {% else %}
           <li><a href="{% url 'signup' %}">Sign Up</a></li>
