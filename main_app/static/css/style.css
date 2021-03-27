@@ -1,3 +1,9 @@
+
+:root {
+  --primary-color: rgb(205, 109, 127);
+  --secondary-color: rgb(19, 161, 248);
+}
+
 body {
     display: flex;
     height: 100vh;
@@ -16,6 +22,13 @@ footer {
   text-align: center;
 }
 
+.headline {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-align: center;
+}
+
 .logoSpace {
   display: flex;
   flex-direction: column;
@@ -23,6 +36,14 @@ footer {
   align-items: center;
 }
 
+.btn {
+  background-color: rgb(205, 109, 127);
+}
+
+.label {
+  font-size: 1.25rem;
+  color: var(--secondary-color);
+}
 
 .blurb {
   display: flex;
@@ -34,7 +55,6 @@ footer {
 .txt1 {
   color: rgb(35, 33, 90);
   padding-right: 15px;
-
 }
 
 .txt2 {
@@ -43,8 +63,27 @@ footer {
 }
 
 .txt3 {
-  color: rgb(205, 109, 127)
+  color: rgb(205, 109, 127);
 }
+
+.text {
+  text-align: center;
+  font-weight: bold;
+}
+
+.about {
+  font-size: 1.25rem;
+}
+
+.quote {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.pageTop {
+  padding-top: 60px; 
+}
+
 @media (max-width: 800px) {
   .blurb {
     flex-direction: column;
@@ -61,5 +100,12 @@ footer {
   
 }
 
+@media (max-width: 600px) {
+  .pageTop {
+    padding-top: 57px;
+  }
+  .label {
+    font-size: 1.1rem;
+  }
 
-
+}
