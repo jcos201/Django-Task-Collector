@@ -22,6 +22,12 @@ footer {
   text-align: center;
 }
 
+label {
+  font-size: 1.25rem;
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
 .headline {
   font-size: 2.5rem;
   font-weight: bold;
@@ -40,10 +46,6 @@ footer {
   background-color: rgb(205, 109, 127);
 }
 
-.label {
-  font-size: 1.25rem;
-  color: var(--secondary-color);
-}
 
 .blurb {
   display: flex;
