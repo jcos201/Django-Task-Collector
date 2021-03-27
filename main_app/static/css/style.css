@@ -52,6 +52,7 @@ label {
   flex-direction: row;
   font-size: 1.5rem;
   font-weight: bold;
+  justify-content: center;
 }
 
 .txt1 {
@@ -86,7 +87,7 @@ label {
   padding-top: 60px; 
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .blurb {
     flex-direction: column;
   }
