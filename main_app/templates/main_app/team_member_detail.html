@@ -33,6 +33,7 @@
                 <hr>
                 <span class="card-title">Currently assigned to:</span>
                 {% for task in team_member.task_set.all %}
+                    <!-- TRY TO ADD STATUS WITH CLASS=RIGHT -->
                     <p>{{task.name}}</p>
                 {% endfor %}
             </div>

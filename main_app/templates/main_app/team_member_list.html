@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Team Members</h1>
+<p class="headline pageTop">Team Members</p>
 
 {% for member in team_member_list %}
     <a href="{% url 'team_detail' member.id %}">

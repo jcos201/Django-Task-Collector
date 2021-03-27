@@ -89,6 +89,10 @@ footer {
     flex-direction: column;
   }
 
+  .logo {
+    max-width: 400px;
+  }
+
   .txt1 {
     padding-right: 0;
   
