@@ -3,6 +3,15 @@
 
 <p class="headline pageTop">Team Members</p>
 
+{% if not team_member_list %}
+    <div class="text">
+        <span class="txt2">
+            <p class="blurb">You don't have any team members yet.</p> 
+            <p class="blurb">Click on '<u><a href="{% url 'team_create' %}">Add Team Member</a></u>' to start adding them to your project.</p>
+        </span>
+    </div>
+{% endif %}
+
 {% for member in team_member_list %}
     <a href="{% url 'team_detail' member.id %}">
         <div class="card">
