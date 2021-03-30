@@ -22,6 +22,8 @@ footer {
   text-align: center;
 }
 
+
+
 label {
   font-size: 1.25rem;
   color: var(--secondary-color);
@@ -40,6 +42,12 @@ label {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.topLabel {
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+  font-weight: bold;
 }
 
 .btn {
@@ -87,6 +95,26 @@ label {
   padding-top: 60px; 
 }
 
+.detailsTop{
+  margin: 5px 0;
+}
+
+.photo {
+  max-height: 300px;
+}
+
+.U {
+  background-color: #fff59d;
+}
+
+.N {
+  background-color: #ffcdd2;
+}
+
+.F {
+  background-color: #b9f6ca;
+}
+
 @media (max-width: 900px) {
   .blurb {
     flex-direction: column;
@@ -104,15 +132,36 @@ label {
   .txt2 {
     padding-right: 0;
   }
+
+  .card-content {
+    padding: 10px !important;
+  }
   
+  .card-action {
+    padding: 10px !important;
+  }
+
+  .card-panel {
+    padding: 10px !important;
+  }
 }
 
 @media (max-width: 600px) {
+  .card-title {
+    font-size: 1.25rem;
+  }
+  blockquote {
+    padding-left: 1rem;
+  }
+
   .pageTop {
     padding-top: 57px;
   }
   .label {
     font-size: 1.1rem;
+  }
+  .btn {
+    padding: 0 6px;
   }
 
 }

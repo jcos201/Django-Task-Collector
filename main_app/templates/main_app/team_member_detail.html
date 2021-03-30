@@ -1,37 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Team Member Details</h1>
+<p class="center pageTop topLabel">Team Member Details</p>
 
 <div class="row">
-<!-- Team Member Photo -->
-    <div class="col s6">
-        <div class="card">
-        
-    {% if team_member.photo_set.count %}
-        <div class="center-align"><img src="{{ team_member.photo_set.first.url }}" alt="" class="responsive-img card-panel"></div>
-    {% else %}
-        <div class="card-panel teal-text center-align">{{ team_member.name }} has no photo</div>
-    {% endif %}
-
-<!-- Form to Add Team Member Photo -->
-    <form action="{% url 'add_photo' team_member.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
-        {% csrf_token %}
-        <input type="file" name="photo-file">
-        <br><br>
-        <input type="submit" value="Upload Photo" class="btn">
-    </form>
-    </div>
-</div>
-
-<!-- Team Member Details -->
+    <!-- Team Member Details -->
     <div class="col s6 col-offset-3">
         <div class="card">
             <div class="card-content">
                 <span class="card-title">{{ team_member.name }}</span>
                 <p><blockquote>Role: {{ team_member.role }}</blockquote></p>
                 <hr>
-                <span class="card-title">Currently assigned to:</span>
+                <span class="card-title"><label> Assigned to:</label></span>
                 {% for task in team_member.task_set.all %}
                     <!-- TRY TO ADD STATUS WITH CLASS=RIGHT -->
                     <p>{{task.name}}</p>
@@ -41,6 +21,26 @@
                 <a href="{% url 'team_update' team_member.id %}">Edit</a>
                 <a href="{% url 'team_delete' team_member.id %}">Delete</a>
             </div>
+        </div>
+    </div>
+
+<!-- Team Member Photo -->
+    <div class="col s6">
+        <div class="card">
+        
+            {% if team_member.photo_set.count %}
+                <div class="center-align"><img src="{{ team_member.photo_set.first.url }}" alt="" class="responsive-img photo"></div>
+            {% else %}
+                <div class="card-panel center-align"><label>{{ team_member.name }} has no photo</label></div>
+            {% endif %}
+
+            <!-- Form to Add Team Member Photo -->
+            <form action="{% url 'add_photo' team_member.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
+                {% csrf_token %}
+                <input type="file" name="photo-file">
+                <br><br>
+                <input type="submit" value="Upload Photo" class="btn">
+            </form>
         </div>
     </div>
 </div>

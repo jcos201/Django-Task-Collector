@@ -16,7 +16,7 @@
     <div class="card">
         <a href="{% url 'detail' task.id %}">
 
-            <div class="card-content">
+            <div class="card-content {{task.status_set.first.status}}">
                 <span class="card-title">{{ task.name }}</span>
                 <p>Description: {{ task.description }} <span class="right">Due Date: {{ task.due_date }}</span></p>
                 <p>Status: {{ task.status_set.first.get_status_display }}</p>
