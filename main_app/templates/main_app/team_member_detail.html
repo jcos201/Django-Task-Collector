@@ -29,7 +29,7 @@
         <div class="card">
         
             {% if team_member.photo_set.count %}
-                <div class="center-align"><img src="{{ team_member.photo_set.first.url }}" alt="" class="responsive-img photo"></div>
+                <div class="center-align"><img src="{{ team_member.photo_set.first.url }}" alt="Picture of team member {{ team_member.name }}" class="responsive-img photo"></div>
             {% else %}
                 <div class="card-panel center-align"><label>{{ team_member.name }} has no photo</label></div>
             {% endif %}

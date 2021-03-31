@@ -7,8 +7,8 @@
     <div class="col s6">
         <div class="card">
             <div class="card-content">
-                <p>Description: {{ task.description }}</p>
-                <p>Due Date: {{ task.due_date }}</p>
+                <p><b>Description:</b> {{ task.description }}</p>
+                <p><b>Due Date:</b> {{ task.due_date }}</p>
             </div>
             <div class="card-action">
                 <a href="{% url 'tasks_update' task.id %}">Edit</a>
@@ -26,7 +26,8 @@
 
                     {{ status_form.as_p }}
 
-                    <input type="submit" value="Status Update" class="btn">
+                    <input type="submit" id="update" value="Update" class="btn">
+                    <p id="showUpdate" class="btn">Update Status</p>
                 </form>
             </div>
         </div>
@@ -40,9 +41,14 @@
             {% for member in task.team_members.all %}
             <div class="card">
                 <div class="card-content">
-                    <span class="card-title">
-                        {{ member.name }}
-                    </span>
+                    <div class="row teammateDetail">
+                        {% if member.photo_set.count %}
+                            <img src="{{ member.photo_set.first.url }}" alt="Picture of team member {{ team_member.name }}" class="assignedPhoto">
+                        {% endif %}
+                        <span class="card-title">
+                            {{ member.name }}
+                        </span>
+                    </div>
                 </div>
                 <div class="card-action">
                     <form action="{% url 'remove_team_members' task.id member.id %}" method="post">
@@ -53,7 +59,9 @@
             </div>
             {% endfor %}
         {% else %}
-        <label>{{ task.name }} has no team members assigned.</label>
+        <div class="center">
+            <label>{{ task.name }} has no team members assigned.</label>
+        </div>
         {% endif %}
     </div>
     <div class="col s6">
@@ -76,7 +84,10 @@
                 </div>
             {% endfor %}
         {% else %}
+        <div class="center">
+            
             <label>No available team members for {{task.name}}</label>
+        </div>
         {% endif %}
     </div>
 </div>
@@ -84,6 +95,14 @@
 <script>
     var selectEl = document.getElementById('id_status');
     M.FormSelect.init(selectEl);
+
+document.onload = function() {
+    console.log('I am ready');
+
+    let x = document.getElementById("update");
+    x.style.display="none";
+  }
+
 </script>
 
 {% endblock %}
