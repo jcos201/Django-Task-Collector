@@ -1,8 +1,17 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block content %}
 
-<h1>About the Task Collector</h1>
+<p class="txt3 quote pageTop text">“Being a Project Manager is like being an artist, you have the different colored process streams combining into a work of art” ~ Greg Cimmarrusti</p>
 <hr/>
-<p>Use the Task Collector</p>
+<p class="txt1 text about">Use the Task Collector to track your team and the status of project stats.</p>
+
+<div class="carousel center" data-indicators="true">
+    <a class="carousel-item" href="#one!"><img src="{% static 'images/AddTasks.png' %}">Create a task</a>
+    <a class="carousel-item" href="#two!"><img src="{% static 'images/Team.png' %}">Add the members of your team</a>
+    <a class="carousel-item" href="#three!"><img src="{% static 'images/AssignTeam.png' %}">Assign team members to your task</a>
+    <a class="carousel-item" href="#four!"><img src="{% static 'images/TrackTasks.png' %}">Track the status of your task as it moves through the project life cycle</a>
+  </div>
 
 {% endblock %}

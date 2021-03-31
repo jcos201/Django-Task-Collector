@@ -103,6 +103,18 @@ label {
   max-height: 300px;
 }
 
+.teammateDetail{
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.assignedPhoto {
+  max-width: 80px;
+  padding-right: 20px;
+}
+
 .U {
   background-color: #fff59d;
 }
@@ -115,6 +127,16 @@ label {
   background-color: #b9f6ca;
 }
 
+.carousel-item {
+  background-color: #EEE2DC;
+}
+
+@media (min-width: 901px) {
+  .carousel-item {
+    width: 300px !important;
+    height: 300px !important;
+  }
+}
 @media (max-width: 900px) {
   .blurb {
     flex-direction: column;
