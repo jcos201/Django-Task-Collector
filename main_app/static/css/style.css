@@ -137,6 +137,7 @@ label {
     height: 300px !important;
   }
 }
+
 @media (max-width: 900px) {
   .blurb {
     flex-direction: column;
