@@ -16,6 +16,7 @@ This is the Entity Relationship Diagram for the app.  One user can have many tas
 ## Technologies Used
 * Django
 * Python
+* PostgreSQL
 * CSS3  
 * JQuery v3.5  
 * Materialize  
